@@ -1,4 +1,3 @@
-%%writefile app.py
 import os
 import uvicorn
 from fastapi import FastAPI
@@ -118,7 +117,7 @@ formatted_agent_chain = (
 app = FastAPI(
     title="Movie & Weather Agent",
     version="1.0",
-    descriptio="A Langchain agent(GEMINI) with search_movies and get_weather tools,served via LangServe.",
+    description="A Langchain agent(GEMINI) with search_movies and get_weather tools,served via LangServe.",
 )
 @app.get("/")
 def root():
