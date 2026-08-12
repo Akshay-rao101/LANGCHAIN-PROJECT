@@ -1,4 +1,4 @@
-
+%%writefile app.py
 import os
 import uvicorn
 from fastapi import FastAPI
@@ -61,7 +61,7 @@ tools = [get_weather, search_movies, change__to_f]
 
 # --- 2. Initialize Model & Agent ---
 # Retrieve the key from the OS environment instead of Colab's userdata
-GOOGLE_API_KEY = os.environ.get("GEMINI_API_KEY")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 
 llm_flash = ChatGoogleGenerativeAI(
     model="gemma-4-31b-it",
@@ -115,21 +115,15 @@ formatted_agent_chain = (
 
 # --- 3. FastAPI App ---
 ##Need To Code
-app = FastAPI{
+app = FastAPI(
     title="Movie & Weather Agent",
     version="1.0",
-    description="A LangChain agent (Gemini) with search_movies and get_weather tools, served via LangServe.",
-}
-
+    descriptio="A Langchain agent(GEMINI) with search_movies and get_weather tools,served via LangServe.",
+)
 @app.get("/")
 def root():
-  return ("message": "Server is running. Visit /agent/playground/ to chat, or /docs")
-
-add_routes(app, formatted_agent_chain, path ="/agent")
-
-
-)
-
+    return{"message": "Server is running.Visit /agent/playground/ to chat, or /docs for the API."}
+add_routes(app, formatted_agent_chain, path="/agent")
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)
