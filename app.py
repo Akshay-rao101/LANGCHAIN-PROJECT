@@ -1,3 +1,4 @@
+
 import os
 import uvicorn
 from fastapi import FastAPI
@@ -124,7 +125,7 @@ app = FastAPI{
 def root():
   return ("message": "Server is running. Visit /agent/playground/ to chat, or /docs")
 
-add_routes(app, formatted_agent_chain, path "/agent")
+add_routes(app, formatted_agent_chain, path ="/agent")
 
 
 )
